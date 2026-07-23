@@ -1,0 +1,113 @@
+TravelMate AI — demo testing (PoC)
+==================================
+
+Tablet UI story mode (default ON)
+---------------------------------
+When ``TRAVELMATE_DEMO_UI_STORY=1`` (default):
+
+  • Onboard **> 10**: stop request + instability-style alerts (stack as usual).
+  • Onboard **2–10**: calm inputs → **no** operational alerts.
+  • Onboard **1**: journey-end style alert + tablet line  
+    “Last destination — evacuate passengers before departure.”
+  • **Emergency** (fire/smoke) for a short window each cycle (see env below).
+  • **Startup only:** first **10 s** after each demo origin shows **Bus not ready** with calm inputs
+    (no alerts) — override with ``TRAVELMATE_DEMO_ADAPTER_HEALTH_DELAY_SEC``.
+  • **Recurring** bus-not-ready windows are **off** by default. To enable:
+
+  TRAVELMATE_DEMO_STORY_UNREADY_WINDOWS=1
+
+  Then tune: ``TRAVELMATE_DEMO_STORY_UNREADY_AT``, ``TRAVELMATE_DEMO_STORY_UNREADY_HOLD_SEC``.
+    Ramp countdown **pauses** during emergency / not-ready windows.
+
+Disable the scripted story (restore profile timeline + old tablet readiness only):
+
+  TRAVELMATE_DEMO_UI_STORY=0
+
+Tune cycle (seconds after the boot delay, repeating every ``_CYCLE_SEC``):
+
+  TRAVELMATE_DEMO_STORY_CYCLE_SEC=540
+  TRAVELMATE_DEMO_STORY_EMERGENCY_AT=95
+  TRAVELMATE_DEMO_STORY_EMERGENCY_HOLD_SEC=10
+  TRAVELMATE_DEMO_STORY_UNREADY_AT=260
+  TRAVELMATE_DEMO_STORY_UNREADY_HOLD_SEC=22
+
+Snapshot field ``primary_display`` is the full sentence for the main panel; sound may include
+``NOT_READY`` when the bus becomes not ready, and ``SAFETY`` when a passenger stop request starts.
+
+
+Passenger count ramp (tablet “Passengers onboard”)
+--------------------------------------------------
+When TRAVELMATE_DEMO (or DEMO_MODE) is on, the demo timeline applies a passenger
+ramp by default:
+
+  • Starts at TRAVELMATE_DEMO_PASSENGER_RAMP_START (default 50).
+  • Every TRAVELMATE_DEMO_PASSENGER_RAMP_SEC (default 120 seconds / 2 minutes),
+    subtract TRAVELMATE_DEMO_PASSENGER_RAMP_DELTA (default 10).
+  • When the count reaches 0, the whole demo cycle resets (phase A, profile 0,
+    ramp back to START, and the 30s subsystem “boot” for tablet readiness runs again).
+
+Disable the ramp (timeline-only density) with:
+
+  TRAVELMATE_DEMO_PASSENGER_RAMP=0
+
+Faster dry run (10 s steps, −5 passengers, start 20 → hits 0 quickly):
+
+  TRAVELMATE_DEMO_PASSENGER_RAMP_SEC=10
+  TRAVELMATE_DEMO_PASSENGER_RAMP_DELTA=5
+  TRAVELMATE_DEMO_PASSENGER_RAMP_START=20
+  TRAVELMATE_DEMO_TICK_SEC=5
+
+
+Emergency acknowledge (Terminal 1, demo mode)
+-------------------------------------------
+While ``runtime_loop.py`` runs with ``TRAVELMATE_DEMO=1``:
+
+  • Type **ack** or **a** or **yes** + Enter in the same window — does not pause ticks.
+  • Or set ``TRAVELMATE_DEMO_EMERGENCY_ACK_FILE=emergency_ack.txt`` and create that file
+    in the project folder once to trigger a single ack (file is deleted after read).
+
+After ack, fire/smoke stays suppressed until the demo emergency window ends, so the story keeps running.
+
+
+Terminal 1 — backend (must be running for status.json to update)
+-----------------------------------------------------------------
+PowerShell:
+
+  cd "c:\Users\My Laptop\Documents\Travelmate_POC"
+  $env:TRAVELMATE_DEMO = "1"
+  python runtime_loop.py
+
+Optional: shorter wall-clock between ramp steps while testing:
+
+  $env:TRAVELMATE_DEMO_PASSENGER_RAMP_SEC = "30"
+
+Optional: backend tick interval (how often Python rewrites status.json):
+
+  $env:TRAVELMATE_DEMO_TICK_SEC = "20"
+
+
+Terminal 2 — static file server (required; do not open index.html as file://)
+-----------------------------------------------------------------------------
+PowerShell:
+
+  cd "c:\Users\My Laptop\Documents\Travelmate_POC\public"
+  python -m http.server 8080
+
+Browser:
+
+  http://localhost:8080/
+
+You should see “Backend tick …” and “Passengers onboard: … / 50” change when the
+backend tick runs; the onboard count steps down on the ramp schedule, not every
+poll.
+
+
+Verify in DEBUG logs (demo mode enables DEBUG on the runtime logger)
+--------------------------------------------------------------------
+Look for lines such as:
+
+  DEMO: passenger_ramp reached 0; resetting demo
+
+and:
+
+  DEMO: timeline phase=… ramp=…

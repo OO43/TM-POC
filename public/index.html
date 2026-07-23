@@ -1,0 +1,557 @@
+<!DOCTYPE html>
+<!--
+  © 2026 TravelMate AI.
+  Confidential and Proprietary.
+  All rights reserved.
+-->
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>TravelMate AI — Driver</title>
+  <style>
+    :root {
+      font-family: system-ui, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      --bg: #111;
+      --bg-panel: #1a1a1a;
+      --bg-elevated: #222;
+      --border: #333;
+      --text: #f2f2f2;
+      --muted: #888;
+      --green: #3d9e5c;
+      --amber: #c9a227;
+      --red: #c73e3e;
+      --blue: #4a8fd4;
+      --touch-min: 48px;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    html, body {
+      margin: 0;
+      height: 100%;
+      background: var(--bg);
+      color: var(--text);
+    }
+    body {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      max-height: 100vh;
+      overflow: hidden;
+    }
+
+    /* —— Top bar —— */
+    .topbar {
+      flex-shrink: 0;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 0.75rem 1.5rem;
+      padding: 0.65rem 1rem;
+      background: var(--bg-elevated);
+      border-bottom: 2px solid var(--border);
+    }
+    .brand {
+      font-size: 1.05rem;
+      font-weight: 700;
+      letter-spacing: -0.02em;
+    }
+    .topbar-right {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-end;
+      gap: 0.5rem;
+    }
+    .sys-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem 0.75rem;
+      justify-content: flex-end;
+    }
+    .sys-item {
+      font-size: 0.7rem;
+      text-transform: uppercase;
+      letter-spacing: 0.06em;
+      color: var(--muted);
+      display: flex;
+      align-items: center;
+      gap: 0.35rem;
+    }
+    .sys-item .dot {
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: #555;
+    }
+    .sys-item.ok .dot { background: var(--green); }
+    .sys-item.bad .dot { background: var(--red); }
+    .bus-line {
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+    .bus-line.ready { color: var(--green); }
+    .bus-line.not-ready { color: var(--amber); }
+
+    /* —— Main workspace —— */
+    .workspace {
+      flex: 1;
+      display: flex;
+      flex-direction: row;
+      min-height: 0;
+      padding: 0.75rem;
+      gap: 0.75rem;
+    }
+    @media (max-width: 900px) {
+      .workspace { flex-direction: column; }
+    }
+    .main-col {
+      flex: 1;
+      min-width: 0;
+      display: flex;
+      flex-direction: column;
+      gap: 0.75rem;
+      min-height: 0;
+    }
+    .side-col {
+      flex: 0 0 220px;
+      display: flex;
+      flex-direction: column;
+      gap: 0.65rem;
+    }
+    @media (max-width: 900px) {
+      .side-col { flex: 0 0 auto; flex-direction: row; flex-wrap: wrap; }
+      .side-card { flex: 1 1 160px; }
+    }
+
+    /* Primary alert panel */
+    .alert-primary {
+      flex: 1;
+      min-height: 8rem;
+      max-height: 40vh;
+      padding: 1.25rem 1.5rem;
+      background: var(--bg-panel);
+      border: 3px solid var(--border);
+      border-radius: 4px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      overflow: hidden;
+    }
+    .alert-primary .lbl {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.75rem;
+    }
+    .alert-primary .msg {
+      font-size: clamp(1.15rem, 3.5vw, 1.75rem);
+      font-weight: 700;
+      line-height: 1.25;
+      word-break: break-word;
+      color: var(--text);
+      overflow: hidden;
+      display: -webkit-box;
+      -webkit-box-orient: vertical;
+      -webkit-line-clamp: 6;
+    }
+    .alert-primary.tier-emergency {
+      border-color: var(--red);
+      background: #251818;
+    }
+    .alert-primary.tier-emergency .msg { color: #ffb4b4; }
+    .alert-primary.tier-safety {
+      border-color: var(--amber);
+      background: #252218;
+    }
+    .alert-primary.tier-safety .msg { color: #f5e6a8; }
+    .alert-primary.tier-info {
+      border-color: var(--blue);
+      background: #182025;
+    }
+    .alert-primary.tier-info .msg { color: #b8d4f0; }
+    .alert-primary.tier-ready {
+      border-color: var(--green);
+      background: #18251c;
+    }
+    .alert-primary.tier-ready .msg { color: #b8e8c8; }
+    .alert-primary.tier-neutral .msg { color: var(--text); }
+
+    /* Pending queue */
+    .pending-panel {
+      flex-shrink: 0;
+      padding: 1rem 1.25rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+      max-height: 28vh;
+      overflow-y: auto;
+    }
+    .pending-panel .lbl {
+      font-size: 0.65rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.6rem;
+    }
+    .pending-panel ul {
+      margin: 0;
+      padding-left: 1.2rem;
+      font-size: 0.9rem;
+      line-height: 1.5;
+      color: #ccc;
+    }
+    .pending-panel li { margin: 0.35rem 0; }
+    .pending-empty {
+      color: var(--muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    /* Side cards */
+    .side-card {
+      padding: 1rem;
+      background: var(--bg-panel);
+      border: 1px solid var(--border);
+      border-radius: 4px;
+    }
+    .side-card .lbl {
+      font-size: 0.6rem;
+      text-transform: uppercase;
+      letter-spacing: 0.1em;
+      color: var(--muted);
+      margin-bottom: 0.4rem;
+    }
+    .side-card .val {
+      font-size: 1rem;
+      font-weight: 600;
+    }
+    .side-card.emergency-on {
+      border-color: var(--red);
+      background: #251818;
+    }
+    .side-card.emergency-on .val { color: #ffb4b4; }
+
+    @keyframes demoEmergencyPulse {
+      0%, 100% { box-shadow: 0 0 0 0 rgba(199, 62, 62, 0.45); }
+      50% { box-shadow: 0 0 14px 4px rgba(199, 62, 62, 0.85); }
+    }
+    .emergency-pulse {
+      animation: demoEmergencyPulse 1.1s ease-in-out infinite;
+    }
+    .actionbar button.emergency-pulse {
+      border-color: var(--red) !important;
+      color: #ffb4b4 !important;
+      background: #351818 !important;
+    }
+
+    .alert-primary.tier-not-ready {
+      border-color: var(--amber);
+      background: #252218;
+    }
+    .alert-primary.tier-not-ready .msg { color: #f0d68a; }
+
+    /* Bottom action bar */
+    .actionbar {
+      flex-shrink: 0;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      padding: 0.65rem 1rem;
+      background: var(--bg-elevated);
+      border-top: 2px solid var(--border);
+    }
+    .actionbar button {
+      min-height: var(--touch-min);
+      padding: 0 1rem;
+      font-size: 0.85rem;
+      font-weight: 600;
+      border-radius: 4px;
+      border: 2px solid #444;
+      background: #2a2a2a;
+      color: #777;
+      cursor: not-allowed;
+    }
+    .actionbar button:disabled {
+      opacity: 1;
+    }
+    .actionbar button.btn-available {
+      border-color: #555;
+      color: #aaa;
+      background: #333;
+    }
+    .actionbar button.btn-emphasis {
+      border-color: var(--amber);
+      color: #ddb84d;
+      background: #302818;
+    }
+
+    .status-banner {
+      flex-shrink: 0;
+      padding: 0.5rem 1rem;
+      font-size: 0.85rem;
+      background: #2a2020;
+      color: #faa;
+      border-bottom: 1px solid var(--border);
+    }
+    .status-banner[hidden] { display: none !important; }
+
+    .consent-notice {
+      width: 100%;
+      margin-top: 0.35rem;
+      font-size: 0.8rem;
+      font-weight: 600;
+      color: var(--blue);
+      letter-spacing: 0.02em;
+    }
+    .consent-notice[hidden] { display: none !important; }
+
+    .freshness {
+      font-size: 0.68rem;
+      font-weight: 400;
+      color: var(--muted);
+      margin-top: 0.25rem;
+      letter-spacing: 0.02em;
+      font-variant-numeric: tabular-nums;
+    }
+  </style>
+</head>
+<body>
+  <header class="topbar">
+    <div>
+      <div class="brand">TravelMate AI</div>
+      <div class="freshness" id="statusFresh" aria-live="polite">Waiting for status.json…</div>
+    </div>
+    <div class="topbar-right">
+      <div class="sys-row" id="sysRow" aria-label="Subsystem status"></div>
+      <div class="consent-notice" id="consentNotice" hidden>Vulnerable passenger onboard</div>
+      <div class="bus-line not-ready" id="busLine">Bus not ready</div>
+    </div>
+  </header>
+
+  <div class="status-banner" id="errBanner" hidden></div>
+
+  <div class="workspace">
+    <div class="main-col">
+      <section class="alert-primary tier-neutral" id="primaryPanel" aria-live="polite">
+        <div class="lbl">Active alert</div>
+        <div class="msg" id="primaryMsg">—</div>
+      </section>
+      <section class="pending-panel">
+        <div class="lbl">Pending alerts <span id="pendingCount">(0)</span></div>
+        <ul id="queue"></ul>
+        <p class="pending-empty" id="queueEmpty" hidden>None</p>
+      </section>
+    </div>
+    <aside class="side-col">
+      <div class="side-card">
+        <div class="lbl">Passengers onboard</div>
+        <div class="val" id="density">—</div>
+      </div>
+      <div class="side-card">
+        <div class="lbl">Sound (demo)</div>
+        <div class="val" id="sound">Sound: —</div>
+      </div>
+      <div class="side-card" id="emCard">
+        <div class="lbl">Emergency</div>
+        <div class="val" id="emState">Inactive</div>
+      </div>
+    </aside>
+  </div>
+
+  <footer class="actionbar" aria-label="Actions (disabled demo)">
+    <button type="button" disabled id="btnCam">View Cameras</button>
+    <button type="button" disabled id="btnAck">Acknowledge Emergency</button>
+    <button type="button" disabled id="btnDiv">Diversion</button>
+    <button type="button" disabled id="btnSched">Schedule Info</button>
+  </footer>
+
+  <script>
+    /* Poll often; values change only when runtime_loop writes status.json (default 120s, or demo / TRAVELMATE_TICK_INTERVAL_SEC). */
+    var POLL_MS = 2000;
+    var SYS_KEYS = ["camera", "can", "ble", "audio", "display"];
+    var SYS_LABELS = { camera: "Camera", can: "CAN", ble: "BLE", audio: "Audio", display: "Display" };
+
+    var primaryPanel = document.getElementById("primaryPanel");
+    var primaryMsg = document.getElementById("primaryMsg");
+    var queueEl = document.getElementById("queue");
+    var queueEmpty = document.getElementById("queueEmpty");
+    var pendingCount = document.getElementById("pendingCount");
+    var busLine = document.getElementById("busLine");
+    var sysRow = document.getElementById("sysRow");
+    var densityEl = document.getElementById("density");
+    var soundEl = document.getElementById("sound");
+    var emCard = document.getElementById("emCard");
+    var emState = document.getElementById("emState");
+    var errBanner = document.getElementById("errBanner");
+    var btnCam = document.getElementById("btnCam");
+    var btnAck = document.getElementById("btnAck");
+    var btnDiv = document.getElementById("btnDiv");
+    var btnSched = document.getElementById("btnSched");
+    var consentNotice = document.getElementById("consentNotice");
+    var statusFresh = document.getElementById("statusFresh");
+
+    function showError(msg) {
+      if (msg) {
+        errBanner.hidden = false;
+        errBanner.textContent = msg;
+      } else {
+        errBanner.hidden = true;
+        errBanner.textContent = "";
+      }
+    }
+
+    function tierClass(data) {
+      if (data.emergency_active) return "tier-emergency";
+      var sc = data.sound_cue;
+      if (sc === "EMERGENCY") return "tier-emergency";
+      if (sc === "SAFETY") return "tier-safety";
+      if (sc === "NOT_READY") return "tier-not-ready";
+      if (sc === "INFO") return "tier-info";
+      if (sc === "READY" || sc === "STARTUP") return "tier-ready";
+      return "tier-neutral";
+    }
+
+    function renderSysStatus(data) {
+      sysRow.innerHTML = "";
+      var ss = data.system_status;
+      if (!ss || typeof ss !== "object") {
+        SYS_KEYS.forEach(function (key) {
+          var el = document.createElement("div");
+          el.className = "sys-item";
+          el.innerHTML = '<span class="dot"></span><span>' + (SYS_LABELS[key] || key) + '</span> <span>—</span>';
+          sysRow.appendChild(el);
+        });
+        return;
+      }
+      SYS_KEYS.forEach(function (key) {
+        var el = document.createElement("div");
+        if (!(key in ss)) {
+          el.className = "sys-item";
+          el.innerHTML = '<span class="dot"></span><span>' + (SYS_LABELS[key] || key) + '</span> <span>—</span>';
+          sysRow.appendChild(el);
+          return;
+        }
+        var ok = !!ss[key];
+        el.className = "sys-item" + (ok ? " ok" : " bad");
+        el.innerHTML = '<span class="dot"></span><span>' + (SYS_LABELS[key] || key) + '</span> <span>' + (ok ? "OK" : "—") + "</span>";
+        sysRow.appendChild(el);
+      });
+    }
+
+    function render(data) {
+      if (statusFresh) {
+        var tq = data.tick_seq != null ? String(data.tick_seq) : "—";
+        var ts = data.updated_at_utc != null ? String(data.updated_at_utc) : "—";
+        statusFresh.textContent = "Backend tick " + tq + " · " + ts;
+      }
+
+      var hasPrimary = data.primary_alert != null && data.primary_alert !== "";
+      var line =
+        data.primary_display != null && String(data.primary_display).trim() !== ""
+          ? String(data.primary_display)
+          : hasPrimary
+            ? String(data.primary_alert)
+            : "";
+      primaryMsg.textContent = line || "No active alerts";
+
+      primaryPanel.className = "alert-primary " + tierClass(data);
+
+      var n = Number(data.pending_alert_count);
+      if (isNaN(n)) n = 0;
+      pendingCount.textContent = "(" + n + ")";
+
+      var q = data.alert_queue || [];
+      queueEl.innerHTML = "";
+      if (q.length === 0) {
+        queueEmpty.hidden = false;
+      } else {
+        queueEmpty.hidden = true;
+        q.forEach(function (t) {
+          var li = document.createElement("li");
+          li.textContent = t;
+          queueEl.appendChild(li);
+        });
+      }
+
+      var br = !!data.bus_ready;
+      busLine.textContent = br ? "Bus ready to go" : "Bus not ready";
+      busLine.className = "bus-line " + (br ? "ready" : "not-ready");
+
+      var ac = data.active_consent;
+      var hasConsent = Array.isArray(ac) && ac.length > 0;
+      consentNotice.hidden = !hasConsent;
+
+      var on = data.passengers_onboard;
+      var cap = data.vehicle_capacity;
+      densityEl.textContent =
+        typeof on === "number" && typeof cap === "number"
+          ? "Passengers onboard: " + on + " / " + cap
+          : "—";
+
+      var sc = data.sound_cue != null ? data.sound_cue : "NONE";
+      soundEl.textContent = "Sound: " + sc;
+
+      var em = !!data.emergency_active;
+      emState.textContent = em ? "Fire / smoke — acknowledge" : "Inactive";
+      emCard.className =
+        "side-card" + (em ? " emergency-on emergency-pulse" : "");
+
+      btnCam.disabled = true;
+      btnAck.disabled = true;
+      btnDiv.disabled = true;
+      btnSched.disabled = true;
+      btnCam.className = "";
+      btnAck.className = em ? "btn-emphasis emergency-pulse" : "";
+      btnDiv.className = !br ? "btn-available" : "";
+      btnSched.className = "btn-available";
+
+      renderSysStatus(data);
+      showError("");
+    }
+
+    async function poll() {
+      try {
+        var url = new URL("status.json", window.location.href);
+        url.searchParams.set("t", String(Date.now()));
+        var r = await fetch(url.toString(), {
+          cache: "no-store",
+          headers: { "Cache-Control": "no-cache", Pragma: "no-cache" },
+        });
+        if (!r.ok) {
+          throw new Error("Unable to load vehicle status.");
+        }
+        var text = await r.text();
+        var data;
+        try {
+          data = JSON.parse(text);
+        } catch (pe) {
+          throw new Error("Invalid status data.");
+        }
+        render(data);
+      } catch (e) {
+        var msg = e && e.message ? e.message : String(e);
+        if (msg === "Failed to fetch" || msg.indexOf("NetworkError") !== -1) {
+          msg = "Connection unavailable.";
+        }
+        showError(msg);
+      }
+    }
+
+    if (location.protocol === "file:") {
+      showError(
+        "Browsers block fetch() for file:// pages. From the project folder run: " +
+          "cd public \u2192 python -m http.server 8080 \u2192 open http://localhost:8080/ " +
+          "(or from repo root open http://localhost:8080/public/index.html). " +
+          "Keep python runtime_loop.py running so status.json updates."
+      );
+      if (statusFresh) {
+        statusFresh.textContent = "file:// — polling disabled";
+      }
+    } else {
+      poll();
+      setInterval(poll, POLL_MS);
+    }
+  </script>
+</body>
+</html>

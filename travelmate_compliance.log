@@ -1,0 +1,223 @@
+2026-04-08T23:57:17Z event=session_start component=travelmate_poc
+2026-04-08T23:57:17Z event=tick_eval tick=1 risk=0.2466 gate_alert=False consent_enhanced_mode=False
+2026-04-08T23:57:17Z event=tick_eval tick=2 risk=0.6944 gate_alert=True consent_enhanced_mode=False
+2026-04-08T23:57:17Z event=driver_alert_raised tick=2 risk=0.6944
+2026-04-08T23:57:17Z event=tick_eval tick=3 risk=0.2764 gate_alert=False consent_enhanced_mode=False
+2026-04-08T23:57:17Z event=driver_alert_cleared tick=3 risk=0.2764
+2026-04-09T00:21:28Z event=session_start component=travelmate_poc
+2026-04-09T00:21:28Z event=tick_eval tick=1 risk=0.2466 gate_alert=False consent_enhanced_mode=False
+2026-04-09T00:21:28Z event=tick_eval tick=2 risk=0.6944 gate_alert=True consent_enhanced_mode=False
+2026-04-09T00:21:28Z event=driver_alert_raised tick=2 risk=0.6944
+2026-04-09T00:21:28Z event=tick_eval tick=3 risk=0.2764 gate_alert=False consent_enhanced_mode=False
+2026-04-09T00:21:28Z event=driver_alert_cleared tick=3 risk=0.2764
+2026-04-09T00:22:39Z event=session_start component=travelmate_poc
+2026-04-09T00:22:39Z event=tick_eval tick=1 risk=0.2466 gate_alert=False consent_enhanced_mode=False
+2026-04-09T00:22:39Z event=tick_eval tick=2 risk=0.6944 gate_alert=True consent_enhanced_mode=False
+2026-04-09T00:22:39Z event=driver_alert_raised tick=2 risk=0.6944
+2026-04-09T00:22:39Z event=tick_eval tick=3 risk=0.2764 gate_alert=False consent_enhanced_mode=False
+2026-04-09T00:22:39Z event=driver_alert_cleared tick=3 risk=0.2764
+2026-04-09T00:27:41Z event=session_start component=travelmate_poc
+2026-04-09T00:27:41Z event=tick_eval tick=1 risk=0.2466 gate_alert=False consent_enhanced_mode=False support_category=undeclared alert_type=instability_risk
+2026-04-09T00:27:41Z event=tick_eval tick=2 risk=0.6944 gate_alert=True consent_enhanced_mode=False support_category=undeclared alert_type=standing_motion_risk
+2026-04-09T00:27:41Z event=driver_alert_raised tick=2 risk=0.6944 alert_type=standing_motion_risk
+2026-04-09T00:27:41Z event=tick_eval tick=3 risk=0.2764 gate_alert=False consent_enhanced_mode=False support_category=undeclared alert_type=instability_risk
+2026-04-09T00:27:41Z event=driver_alert_cleared tick=3 risk=0.2764 alert_type=instability_risk
+2026-04-09T00:29:37Z event=session_start component=travelmate_poc
+2026-04-09T00:29:37Z event=tick_eval tick=1 risk=0.2466 gate_alert=False consent_enhanced_mode=False support_category=undeclared alert_type=instability_risk
+2026-04-09T00:29:37Z event=tick_eval tick=2 risk=0.6944 gate_alert=True consent_enhanced_mode=False support_category=undeclared alert_type=standing_motion_risk
+2026-04-09T00:29:37Z event=driver_alert_raised tick=2 risk=0.6944 alert_type=standing_motion_risk
+2026-04-09T00:29:37Z event=tick_eval tick=3 risk=0.2764 gate_alert=False consent_enhanced_mode=False support_category=undeclared alert_type=instability_risk
+2026-04-09T00:29:37Z event=driver_alert_cleared tick=3 risk=0.2764 alert_type=instability_risk
+2026-04-09T00:40:52Z event=session_start component=travelmate_poc
+2026-04-09T00:40:52Z event=tick_eval tick=1 risk=0.2466 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk
+2026-04-09T00:40:52Z event=tick_eval tick=2 risk=0.6944 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=standing_motion_risk
+2026-04-09T00:40:52Z event=driver_alert_raised tick=2 risk=0.6944 alert_type=standing_motion_risk
+2026-04-09T00:40:52Z event=tick_eval tick=3 risk=0.2764 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk
+2026-04-09T00:40:52Z event=driver_alert_cleared tick=3 risk=0.2764 alert_type=instability_risk
+2026-04-09T00:48:22Z event=session_start component=travelmate_poc
+2026-04-09T00:48:22Z event=tick_eval tick=1 risk=0.2433 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk
+2026-04-09T00:48:22Z event=tick_eval tick=2 risk=0.6929 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=standing_motion_risk
+2026-04-09T00:48:22Z event=driver_alert_raised tick=2 risk=0.6929 alert_type=standing_motion_risk
+2026-04-09T00:48:22Z event=tick_eval tick=3 risk=0.2671 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk
+2026-04-09T00:48:22Z event=driver_alert_cleared tick=3 risk=0.2671 alert_type=instability_risk
+2026-04-09T19:08:59Z event=session_start component=travelmate_poc
+2026-04-09T19:08:59Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk
+2026-04-09T19:08:59Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement
+2026-04-09T19:08:59Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required
+2026-04-09T19:08:59Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk
+2026-04-09T19:08:59Z event=tick_eval tick=5 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position
+2026-04-09T19:08:59Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position
+2026-04-09T19:08:59Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-09T19:08:59Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable
+2026-04-09T19:08:59Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-09T19:08:59Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory
+2026-04-09T19:08:59Z event=tick_eval tick=9 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded
+2026-04-09T19:08:59Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-09T19:08:59Z event=tick_eval tick=11 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop emergency_path=True emergency_sticky_pending=True
+2026-04-09T19:08:59Z event=tick_eval tick=12 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True emergency_sticky_pending=True
+2026-04-09T19:25:34Z event=session_start component=travelmate_poc
+2026-04-09T19:25:34Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk
+2026-04-09T19:25:34Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement
+2026-04-09T19:25:34Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required
+2026-04-09T19:25:34Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk
+2026-04-09T19:25:34Z event=tick_eval tick=5 risk=0.5075 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position
+2026-04-09T19:25:34Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position
+2026-04-09T19:25:34Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-09T19:25:34Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable
+2026-04-09T19:25:34Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-09T19:25:34Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory
+2026-04-09T19:25:34Z event=tick_eval tick=9 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded
+2026-04-09T19:25:34Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-09T19:25:34Z event=tick_eval tick=11 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk
+2026-04-09T19:25:34Z event=tick_eval tick=12 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop scenario_matched=True alert_type=exit_preparation
+2026-04-09T19:25:34Z event=tick_eval tick=13 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=system_support_alert
+2026-04-09T20:00:58Z event=session_start component=travelmate_poc
+2026-04-09T20:00:58Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=tick_eval tick=5 risk=0.5075 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-09T20:00:58Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-09T20:00:58Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=tick_eval tick=9 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-09T20:00:58Z event=driver_alert_raised tick=9 risk=0.0 alert_type=capacity_exceeded
+2026-04-09T20:00:58Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-09T20:00:58Z event=tick_eval tick=11 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=driver_alert_cleared tick=11 risk=0.0 alert_type=instability_risk
+2026-04-09T20:00:58Z event=tick_eval tick=12 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop scenario_matched=True alert_type=exit_preparation diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=tick_eval tick=13 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=system_support_alert diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=diversion_blocked_vehicle_motion tick=14 motion_level=0.3425 vehicle_stationary=False
+2026-04-09T20:00:58Z event=tick_eval tick=14 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:00:58Z event=passenger_notify_simulated tick=15 channel=in_app_message template=route_diversion_active
+2026-04-09T20:00:58Z event=tick_eval tick=15 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=approaching_stop scenario_matched=True alert_type=route_diversion_active diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-09T20:00:58Z event=driver_alert_raised tick=15 risk=0.0 alert_type=route_diversion_active
+2026-04-09T20:00:58Z event=tick_eval tick=16 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-09T20:00:58Z event=tick_eval tick=17 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=passenger_stop_request diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-09T20:03:45Z event=session_start component=travelmate_poc
+2026-04-09T20:03:45Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=tick_eval tick=5 risk=0.5075 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-09T20:03:45Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-09T20:03:45Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=tick_eval tick=9 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-09T20:03:45Z event=driver_alert_raised tick=9 risk=0.0 alert_type=capacity_exceeded
+2026-04-09T20:03:45Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-09T20:03:45Z event=tick_eval tick=11 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=driver_alert_cleared tick=11 risk=0.0 alert_type=instability_risk
+2026-04-09T20:03:45Z event=tick_eval tick=12 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop scenario_matched=True alert_type=exit_preparation diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=tick_eval tick=13 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=system_support_alert diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=diversion_blocked_vehicle_motion tick=14 motion_level=0.3425 vehicle_stationary=False
+2026-04-09T20:03:45Z event=tick_eval tick=14 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T20:03:45Z event=passenger_notify_simulated tick=15 channel=in_app_message template=route_diversion_active
+2026-04-09T20:03:45Z event=tick_eval tick=15 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=approaching_stop scenario_matched=True alert_type=route_diversion_active diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-09T20:03:45Z event=driver_alert_raised tick=15 risk=0.0 alert_type=route_diversion_active
+2026-04-09T20:03:45Z event=tick_eval tick=16 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-09T20:03:45Z event=tick_eval tick=17 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=passenger_stop_request diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-09T21:13:05Z event=session_start component=travelmate_poc
+2026-04-09T21:13:05Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=tick_eval tick=5 risk=0.5075 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-09T21:13:05Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-09T21:13:05Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=tick_eval tick=9 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-09T21:13:05Z event=driver_alert_raised tick=9 risk=0.0 alert_type=capacity_exceeded
+2026-04-09T21:13:05Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-09T21:13:05Z event=tick_eval tick=11 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=driver_alert_cleared tick=11 risk=0.0 alert_type=instability_risk
+2026-04-09T21:13:05Z event=tick_eval tick=12 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop scenario_matched=True alert_type=exit_preparation diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=tick_eval tick=13 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=system_support_alert diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=diversion_blocked_vehicle_motion tick=14 motion_level=0.3425 vehicle_stationary=False
+2026-04-09T21:13:05Z event=tick_eval tick=14 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-09T21:13:05Z event=passenger_notify_simulated tick=15 channel=in_app_message template=route_diversion_active
+2026-04-09T21:13:05Z event=tick_eval tick=15 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=approaching_stop scenario_matched=True alert_type=route_diversion_active diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-09T21:13:05Z event=driver_alert_raised tick=15 risk=0.0 alert_type=route_diversion_active
+2026-04-09T21:13:05Z event=tick_eval tick=16 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-09T21:13:05Z event=tick_eval tick=17 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=passenger_stop_request diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-10T03:33:06Z event=session_start component=travelmate_poc
+2026-04-10T03:33:06Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=tick_eval tick=5 risk=0.5075 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-10T03:33:06Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-10T03:33:06Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=tick_eval tick=9 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-10T03:33:06Z event=driver_alert_raised tick=9 risk=0.0 alert_type=capacity_exceeded
+2026-04-10T03:33:06Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-10T03:33:06Z event=tick_eval tick=11 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=driver_alert_cleared tick=11 risk=0.0 alert_type=instability_risk
+2026-04-10T03:33:06Z event=tick_eval tick=12 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop scenario_matched=True alert_type=exit_preparation diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=tick_eval tick=13 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=system_support_alert diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=diversion_blocked_vehicle_motion tick=14 motion_level=0.3425 vehicle_stationary=False
+2026-04-10T03:33:06Z event=tick_eval tick=14 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:33:06Z event=passenger_notify_simulated tick=15 channel=in_app_message template=route_diversion_active
+2026-04-10T03:33:06Z event=tick_eval tick=15 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=approaching_stop scenario_matched=True alert_type=route_diversion_active diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-10T03:33:06Z event=driver_alert_raised tick=15 risk=0.0 alert_type=route_diversion_active
+2026-04-10T03:33:06Z event=tick_eval tick=16 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-10T03:33:06Z event=tick_eval tick=17 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=passenger_stop_request diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-10T03:44:26Z event=session_start component=travelmate_poc
+2026-04-10T03:44:26Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=tick_eval tick=5 risk=0.5075 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-10T03:44:26Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-10T03:44:26Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=tick_eval tick=9 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-10T03:44:26Z event=driver_alert_raised tick=9 risk=0.0 alert_type=capacity_exceeded
+2026-04-10T03:44:26Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-10T03:44:26Z event=tick_eval tick=11 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=driver_alert_cleared tick=11 risk=0.0 alert_type=instability_risk
+2026-04-10T03:44:26Z event=tick_eval tick=12 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop scenario_matched=True alert_type=exit_preparation diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=tick_eval tick=13 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=system_support_alert diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=diversion_blocked_vehicle_motion tick=14 motion_level=0.3425 vehicle_stationary=False
+2026-04-10T03:44:26Z event=tick_eval tick=14 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T03:44:26Z event=passenger_notify_simulated tick=15 channel=in_app_message template=route_diversion_active
+2026-04-10T03:44:26Z event=tick_eval tick=15 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=approaching_stop scenario_matched=True alert_type=route_diversion_active diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-10T03:44:26Z event=driver_alert_raised tick=15 risk=0.0 alert_type=route_diversion_active
+2026-04-10T03:44:26Z event=tick_eval tick=16 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-10T03:44:26Z event=tick_eval tick=17 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=passenger_stop_request diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-10T04:11:28Z event=session_start component=travelmate_poc
+2026-04-10T04:11:28Z event=tick_eval tick=1 risk=0.4013 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=tick_eval tick=2 risk=0.5413 gate_alert=False consent_enhanced_mode=False support_categories=child_support journey_phase=in_motion scenario_matched=True alert_type=child_high_movement diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=tick_eval tick=3 risk=0.5104 gate_alert=False consent_enhanced_mode=False support_categories=pregnancy_support journey_phase=approaching_stop scenario_matched=True alert_type=seat_assistance_required diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=tick_eval tick=4 risk=0.5131 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity journey_phase=in_motion scenario_matched=True alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=tick_eval tick=5 risk=0.5075 gate_alert=False consent_enhanced_mode=False support_categories=wheelchair journey_phase=in_motion scenario_matched=True alert_type=wheelchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=tick_eval tick=6 risk=0.5789 gate_alert=True consent_enhanced_mode=False support_categories=pushchair journey_phase=in_motion scenario_matched=True alert_type=pushchair_unsafe_position diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=driver_alert_raised tick=6 risk=0.5789 alert_type=pushchair_unsafe_position
+2026-04-10T04:11:28Z event=tick_eval tick=7 risk=0.4479 gate_alert=False consent_enhanced_mode=False support_categories=elderly_support journey_phase=approaching_stop scenario_matched=True alert_type=blocked_exit_vulnerable diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=driver_alert_cleared tick=7 risk=0.4479 alert_type=blocked_exit_vulnerable
+2026-04-10T04:11:28Z event=tick_eval tick=8 risk=0.517 gate_alert=False consent_enhanced_mode=False support_categories=medical_sensitivity,mobility_support journey_phase=in_motion scenario_matched=True alert_type=crowding_advisory diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=tick_eval tick=9 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=False policy_bypass_risk_gating=True
+2026-04-10T04:11:28Z event=driver_alert_raised tick=9 risk=0.0 alert_type=capacity_exceeded
+2026-04-10T04:11:28Z event=tick_eval tick=10 risk_evaluated=False gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion emergency_path=True
+2026-04-10T04:11:28Z event=tick_eval tick=11 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=driver_alert_cleared tick=11 risk=0.0 alert_type=instability_risk
+2026-04-10T04:11:28Z event=tick_eval tick=12 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=visual_impairment journey_phase=approaching_stop scenario_matched=True alert_type=exit_preparation diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=tick_eval tick=13 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=system_support_alert diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=diversion_blocked_vehicle_motion tick=14 motion_level=0.3425 vehicle_stationary=False
+2026-04-10T04:11:28Z event=tick_eval tick=14 risk=0.0 gate_alert=False consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=False alert_type=instability_risk diversion_allowed=False policy_bypass_risk_gating=False
+2026-04-10T04:11:28Z event=passenger_notify_simulated tick=15 channel=in_app_message template=route_diversion_active
+2026-04-10T04:11:28Z event=tick_eval tick=15 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=approaching_stop scenario_matched=True alert_type=route_diversion_active diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-10T04:11:28Z event=driver_alert_raised tick=15 risk=0.0 alert_type=route_diversion_active
+2026-04-10T04:11:28Z event=tick_eval tick=16 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=capacity_exceeded diversion_allowed=True policy_bypass_risk_gating=True
+2026-04-10T04:11:28Z event=tick_eval tick=17 risk=0.0 gate_alert=True consent_enhanced_mode=False support_categories=undeclared journey_phase=in_motion scenario_matched=True alert_type=passenger_stop_request diversion_allowed=False policy_bypass_risk_gating=True

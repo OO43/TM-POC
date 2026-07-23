@@ -1,0 +1,776 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1"/>
+<title>TravelMate — driver glance view</title>
+<style>
+  :root { font-family: system-ui, Segoe UI, sans-serif; }
+  body { margin: 0; padding: 12px; background: #121417; color: #e8eaed; }
+  .meta { font-size: 11px; color: #9aa0a6; margin-bottom: 10px; }
+  .tick-line { margin-bottom: 12px; }
+  .page-title { font-size: 15px; font-weight: 600; margin: 0 0 6px 0; }
+  .hint { font-size: 11px; color: #78808a; line-height: 1.35; }
+
+  section.alerts-pane { margin-bottom: 8px; }
+  section.alerts-pane h2 {
+    margin: 0 0 8px;
+    font-size: 13px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+    color: #e8eaed;
+  }
+
+  #root.empty {
+    opacity: 0.75;
+    padding: 16px 12px;
+    border-radius: 10px;
+    background: #1e2126;
+    font-size: 14px;
+  }
+  ul.alerts-ul {
+    list-style: none; padding: 0; margin: 0;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  li.alert-row {
+    border-radius: 12px;
+    padding: 14px 14px;
+    border-left: 6px solid #444;
+    background: #1e2126;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.35);
+    font-size: clamp(15px, 4vw, 19px);
+  }
+  li.emergency { border-left-color: #e53935; background: #2a1718; }
+  li.instability { border-left-color: #fb8c00; background: #292218; }
+  li.advisory { border-left-color: #1e88e5; background: #18222a; }
+  .pill {
+    display: inline-block; font-size: 10px; text-transform: uppercase;
+    letter-spacing: 0.07em; padding: 4px 8px; border-radius: 999px;
+    margin-bottom: 8px;
+  }
+  .pill.emergency { background: #b71c1c; color: #fff; }
+  .pill.instability { background: #ef6c00; color: #fff; }
+  .pill.advisory { background: #1565c0; color: #fff; }
+  .alert-msg { line-height: 1.38; font-weight: 500; }
+  .alert-sub { font-size: 12px; color: #bdc1c6; margin-top: 8px; }
+
+  #ack-wrap { display: none; margin: 12px 0 14px; }
+  #ack-btn {
+    width: 100%; max-width: 28rem;
+    padding: 16px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: #fff;
+    background: #b71c1c;
+    border: none;
+    border-radius: 12px;
+    cursor: pointer;
+    box-sizing: border-box;
+  }
+  #ack-btn:disabled { opacity: 0.5; cursor: wait; }
+  #ack-status { font-size: 12px; color: #9aa0a6; margin-top: 8px; min-height: 1.25em; }
+
+  .panel {
+    background: #1a1d21;
+    border-radius: 12px;
+    padding: 12px 14px;
+    margin-top: 12px;
+    border: 1px solid #2f3339;
+  }
+  .panel h3 {
+    margin: 0 0 10px;
+    font-size: 12px;
+    font-weight: 600;
+    color: #bdc1c6;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  .vehicle-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 6px 10px;
+    font-size: 13px;
+    color: #e3e5e8;
+  }
+  .vehicle-grid dt { color: #8f9299; margin: 0; }
+  .vehicle-grid dd { margin: 0; font-variant-numeric: tabular-nums; }
+
+  .density-monitor-caption {
+    font-size: 11px;
+    color: #78808a;
+    margin-bottom: 8px;
+  }
+  .density-strip {
+    display: flex;
+    gap: 6px;
+    align-items: stretch;
+  }
+  .density-seg {
+    flex: 1;
+    text-align: center;
+    padding: 10px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 700;
+    line-height: 1.25;
+    letter-spacing: 0.03em;
+    opacity: 0.38;
+    background: #252a30;
+    color: #8f9299;
+    border: 1px solid #333943;
+    pointer-events: none;
+    user-select: none;
+  }
+  .density-seg.active-moderate {
+    opacity: 1;
+    background: linear-gradient(180deg, #1f3d32 0%, #1b2f28 100%);
+    border-color: #3b6f5c;
+    color: #b9f6ca;
+    box-shadow: 0 0 0 1px rgba(46,125,98,0.35);
+  }
+  .density-seg.active-extra {
+    opacity: 1;
+    background: linear-gradient(180deg, #4a3820 0%, #3e2f1a 100%);
+    border-color: #ad8329;
+    color: #ffe082;
+    box-shadow: 0 0 0 1px rgba(173,131,41,0.35);
+  }
+  .density-seg.active-crowded {
+    opacity: 1;
+    background: linear-gradient(180deg, #4a2822 0%, #372018 100%);
+    border-color: #a65d4a;
+    color: #ffccbc;
+    box-shadow: 0 0 0 1px rgba(166,93,74,0.35);
+    animation: pulse-soft 4.2s ease-in-out infinite;
+  }
+  @keyframes pulse-soft {
+    0%, 100% { filter: brightness(1); opacity: 1; }
+    50% { filter: brightness(1.06); opacity: 0.95; }
+  }
+  .attn-banner {
+    margin-top: 10px;
+    padding: 11px 12px;
+    border-radius: 10px;
+    font-size: 14px;
+    font-weight: 700;
+    text-align: center;
+    letter-spacing: 0.04em;
+  }
+  .attn-banner.moderate { background: #1b2f28; color: #c8e6c9; border: 1px solid #2e5545; }
+  .attn-banner.extra { background: #3e2f1a; color: #ffe082; border: 1px solid #6d5420; }
+  .attn-banner.crowded { background: #372018; color: #ffccbc; border: 1px solid #63352a; }
+  .meaning-line {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #9aa0a6;
+    line-height: 1.38;
+  }
+  .provenance-mini {
+    margin-top: 8px;
+    font-size: 10px;
+    color: #5f656d;
+    line-height: 1.3;
+  }
+
+  .muted-panel { opacity: 0.92; }
+  .ghost-btn {
+    display: inline-block;
+    margin-top: 8px;
+    padding: 8px 12px;
+    font-size: 12px;
+    border-radius: 8px;
+    border: 1px solid #3d4249;
+    background: #252a30;
+    color: #8f9299;
+    cursor: default;
+    width: 100%;
+    box-sizing: border-box;
+    text-align: center;
+  }
+  .ghost-btn:disabled {
+    opacity: 0.78;
+    cursor: not-allowed;
+  }
+
+  .can-pill {
+    display: inline-block;
+    padding: 4px 10px;
+    border-radius: 999px;
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.04em;
+    margin-right: 8px;
+    vertical-align: middle;
+  }
+  .can-pill.can-on {
+    background: #1b3328;
+    color: #b9f6ca;
+    border: 1px solid #35624d;
+    animation: can-pulse-soft 3.2s ease-in-out infinite;
+  }
+  .can-pill.can-off {
+    background: #2a2c30;
+    color: #8f9299;
+    border: 1px solid #3d4249;
+    animation: none;
+  }
+  @keyframes can-pulse-soft {
+    0%, 100% { opacity: 1; filter: brightness(1); }
+    50% { opacity: 0.88; filter: brightness(1.04); }
+  }
+  .can-sub { font-size: 12px; color: #bdc1c6; vertical-align: middle; }
+
+  .room-test-panel {
+    margin-top: 14px;
+    padding: 12px 14px 14px;
+    border-radius: 12px;
+    border: 1px solid #343942;
+    background: #15181c;
+  }
+  .room-test-panel h3 {
+    margin: 0 0 4px;
+    font-size: 11px;
+    font-weight: 600;
+    color: #6f7680;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+  }
+  .room-test-panel .rt-hint {
+    margin: 0 0 12px;
+    font-size: 10px;
+    color: #5c6269;
+    line-height: 1.35;
+  }
+  .rt-row { margin-bottom: 14px; }
+  .rt-label-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: baseline;
+    gap: 10px;
+    margin-bottom: 6px;
+  }
+  .rt-label { font-size: 11px; color: #8b919a; }
+  .rt-value { font-size: 12px; color: #c4c7cc; font-variant-numeric: tabular-nums; }
+  .rt-guidance { font-size: 10px; color: #6a7078; margin-top: 4px; }
+  .rt-slider {
+    width: 100%;
+    height: 36px;
+    margin: 0;
+    accent-color: #5c7c92;
+  }
+  .rt-micro {
+    margin: 4px 0 0;
+    font-size: 10px;
+    color: #5a6068;
+    line-height: 1.35;
+  }
+  .rt-seg-row { display: flex; gap: 8px; flex-wrap: wrap; margin-top: 6px; }
+  .rt-seg {
+    flex: 1;
+    min-width: 72px;
+    padding: 10px 8px;
+    font-size: 12px;
+    border-radius: 10px;
+    border: 1px solid #3d4249;
+    background: #1e2126;
+    color: #9aa0a6;
+    cursor: pointer;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .rt-seg.active {
+    border-color: #4a6674;
+    background: #1a252d;
+    color: #c5e3f7;
+  }
+  .rt-num {
+    width: 100%;
+    max-width: 140px;
+    padding: 10px 10px;
+    font-size: 15px;
+    border-radius: 10px;
+    border: 1px solid #3d4249;
+    background: #1e2126;
+    color: #e8eaed;
+    box-sizing: border-box;
+  }
+  .rt-secondary-btn {
+    width: 100%;
+    margin-top: 6px;
+    padding: 10px 12px;
+    font-size: 12px;
+    border-radius: 10px;
+    border: 1px solid #3d4249;
+    background: #22262c;
+    color: #9aa0a6;
+    cursor: pointer;
+  }
+  .rt-secondary-btn:active { opacity: 0.92; }
+  .rt-log {
+    margin-top: 10px;
+    min-height: 1.2em;
+    font-size: 10px;
+    color: #6a7078;
+    line-height: 1.35;
+  }
+
+  footer { margin-top: 16px; font-size: 10px; color: #60646a; line-height: 1.35; }
+</style>
+</head>
+<body>
+  <p class="page-title">TravelMate · glance display</p>
+  <div class="meta tick-line">Tick <strong id="tick">—</strong> · bundles every 1s · <strong>real</strong> density &amp; CAN from last runtime snapshot</div>
+  <p class="hint">Density bands (MODERATE / BUSY / CROWDED) come from server counts only—not alerts. Emergency rows stay visually dominant.</p>
+
+  <section class="alerts-pane" aria-labelledby="alerts-heading">
+    <h2 id="alerts-heading">Alerts</h2>
+    <div id="root" class="empty" aria-live="polite">Loading…</div>
+  </section>
+
+  <div id="ack-wrap" role="region" aria-label="Emergency acknowledgment">
+    <button type="button" id="ack-btn">ACKNOWLEDGE EMERGENCY</button>
+    <div id="ack-status" aria-live="polite"></div>
+  </div>
+
+  <section class="panel" id="vehicle-section" aria-label="Vehicle status">
+    <h3>Vehicle status</h3>
+    <dl class="vehicle-grid" id="vehicle-grid"></dl>
+    <div class="meaning-line" id="vehicle-foot">Source: mirrored CAN fields from runtime (informational).</div>
+  </section>
+
+  <section class="panel" id="attention-section" aria-label="Attention mode">
+    <h3>Density Monitor</h3>
+    <p style="margin:4px 0 8px;font-size:11px;color:#878d96;line-height:1.35;">
+      Display-only density band · not clickable · informational only (<strong>MODERATE</strong> / <strong>BUSY</strong> / <strong>CROWDED</strong>).</p>
+    <div class="density-monitor-caption" id="density-count-line">Passengers onboard: — · capacity —</div>
+    <div role="group" aria-label="Density Monitor (display only)" class="density-strip" id="density-strip">
+      <div class="density-seg" id="seg-mod">MODERATE&nbsp;&lt;&nbsp;10</div>
+      <div class="density-seg" id="seg-xf">BUSY&nbsp;10–19</div>
+      <div class="density-seg" id="seg-crowded">CROWDED&nbsp;≥20</div>
+    </div>
+    <div class="attn-banner moderate" id="attn-banner" style="display:none"></div>
+    <p class="meaning-line" id="attention-meaning"></p>
+    <p class="provenance-mini" id="attention-prov"></p>
+  </section>
+
+  <section class="panel muted-panel" id="tertiary-panel" aria-label="Bus and diversion">
+    <h3 style="margin-bottom:4px;">CAN indicator · diversion</h3>
+    <p style="margin:8px 0 0;font-size:12px;color:#9aa0a6;line-height:1.35;"><span id="can-line"></span></p>
+    <button type="button" class="ghost-btn" id="diversion-btn" disabled tabindex="-1" aria-disabled="true">Diversion (display only)</button>
+    <p class="provenance-mini" id="diversion-note" style="margin-top:6px;"></p>
+  </section>
+
+  <section class="room-test-panel" id="room-test-panel" hidden aria-label="ROOM_TEST simulation controls">
+    <h3>Test control panel</h3>
+    <p class="rt-hint">ROOM_TEST simulation only · values merge after file adapters · secondary to alerts · no alert logic here</p>
+
+    <div class="rt-row">
+      <div class="rt-label-row">
+        <span class="rt-label">Vehicle speed</span>
+        <span class="rt-value" id="rt-speed-val">0 km/h</span>
+      </div>
+      <input type="range" class="rt-slider" id="rt-speed" min="0" max="90" step="1" value="0" aria-label="Vehicle speed km/h"/>
+    </div>
+
+    <div class="rt-row">
+      <div class="rt-label-row">
+        <span class="rt-label">Braking intensity (service)</span>
+        <span class="rt-value" id="rt-brake-val">0.00</span>
+      </div>
+      <input type="range" class="rt-slider" id="rt-brake" min="0" max="1" step="0.01" value="0" aria-label="Braking intensity"/>
+    </div>
+
+    <div class="rt-row">
+      <div class="rt-label-row">
+        <span class="rt-label">Turn intensity</span>
+        <span class="rt-value" id="rt-turn-val">0.00</span>
+      </div>
+      <input type="range" class="rt-slider" id="rt-turn" min="0" max="1" step="0.01" value="0" aria-label="Turn intensity"/>
+      <p class="rt-guidance" id="rt-turn-guide">Lateral severity: —</p>
+    </div>
+
+    <div class="rt-row">
+      <div class="rt-label-row"><span class="rt-label">Vehicle stationary</span></div>
+      <div class="rt-seg-row" role="group" aria-label="Vehicle stationary">
+        <button type="button" class="rt-seg" id="rt-stat-on" data-val="true">ON</button>
+        <button type="button" class="rt-seg" id="rt-stat-off" data-val="false">OFF</button>
+      </div>
+      <p class="rt-micro">When stationary is ON, speed is often 0 — not enforced by this UI.</p>
+    </div>
+
+    <div class="rt-row">
+      <div class="rt-label-row"><span class="rt-label">Doors open</span></div>
+      <div class="rt-seg-row" role="group" aria-label="Doors open">
+        <button type="button" class="rt-seg" id="rt-doors-on" data-val="true">ON</button>
+        <button type="button" class="rt-seg" id="rt-doors-off" data-val="false">OFF</button>
+      </div>
+    </div>
+
+    <div class="rt-row">
+      <div class="rt-label-row"><span class="rt-label">Ramp deployed</span></div>
+      <div class="rt-seg-row" role="group" aria-label="Ramp deployed">
+        <button type="button" class="rt-seg" id="rt-ramp-on" data-val="true">ON</button>
+        <button type="button" class="rt-seg" id="rt-ramp-off" data-val="false">OFF</button>
+      </div>
+    </div>
+
+    <div class="rt-row">
+      <div class="rt-label-row"><span class="rt-label">CAN Bus (test)</span></div>
+      <div class="rt-seg-row" role="group" aria-label="CAN bus connected simulation">
+        <button type="button" class="rt-seg" id="rt-can-on" data-val="true">Connected</button>
+        <button type="button" class="rt-seg" id="rt-can-off" data-val="false">Disconnected</button>
+      </div>
+    </div>
+
+    <div class="rt-row">
+      <div class="rt-label-row">
+        <span class="rt-label">Passengers onboard</span>
+        <span class="rt-value" id="rt-pax-label">—</span>
+      </div>
+      <input type="number" class="rt-num" id="rt-pax" min="0" max="500" step="1" value="0" inputmode="numeric" aria-label="Passengers onboard"/>
+      <p class="rt-guidance" id="rt-density-tier">Density band: —</p>
+    </div>
+
+    <div class="rt-row">
+      <button type="button" class="rt-secondary-btn" id="rt-diversion-btn">Request route diversion</button>
+    </div>
+    <p class="rt-log" id="rt-panel-log" aria-live="polite"></p>
+  </section>
+
+  <footer>
+    Onboard ← <code>density_context</code>; CAN ← <code>can</code>. Bands: onboard &lt;10 <strong>MODERATE</strong>, 10–19 <strong>BUSY</strong>, ≥20 <strong>CROWDED</strong> (computed in <code>tablet_attention_mode.py</code> only).
+    Density display is informational; no density-only alerts.
+  </footer>
+
+<script>
+(function () {
+  const root = document.getElementById('root');
+  const tickEl = document.getElementById('tick');
+  const ackWrap = document.getElementById('ack-wrap');
+  const ackBtn = document.getElementById('ack-btn');
+  const ackStatus = document.getElementById('ack-status');
+  const vehGrid = document.getElementById('vehicle-grid');
+  const attnBanner = document.getElementById('attn-banner');
+  const attnMeaning = document.getElementById('attention-meaning');
+  const attnProv = document.getElementById('attention-prov');
+  const densCount = document.getElementById('density-count-line');
+  const segMod = document.getElementById('seg-mod');
+  const segXf = document.getElementById('seg-xf');
+  const segCrowd = document.getElementById('seg-crowded');
+  const canLine = document.getElementById('can-line');
+  const divBtn = document.getElementById('diversion-btn');
+  const divNote = document.getElementById('diversion-note');
+  const roomTestPanel = document.getElementById('room-test-panel');
+  const rtSpeed = document.getElementById('rt-speed');
+  const rtSpeedVal = document.getElementById('rt-speed-val');
+  const rtBrake = document.getElementById('rt-brake');
+  const rtBrakeVal = document.getElementById('rt-brake-val');
+  const rtTurn = document.getElementById('rt-turn');
+  const rtTurnVal = document.getElementById('rt-turn-val');
+  const rtTurnGuide = document.getElementById('rt-turn-guide');
+  const rtPax = document.getElementById('rt-pax');
+  const rtPaxLabel = document.getElementById('rt-pax-label');
+  const rtDensityTier = document.getElementById('rt-density-tier');
+  const rtPanelLog = document.getElementById('rt-panel-log');
+  const rtDiversionBtn = document.getElementById('rt-diversion-btn');
+  var rtBootstrapped = false;
+  var rtPostTimer = null;
+
+  function esc(s) {
+    return String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;');
+  }
+
+  function syncEmergencyChrome(active) {
+    const hasEmerg = active.some(function (a) { return a.alert_type === 'emergency'; });
+    ackWrap.style.display = hasEmerg ? 'block' : 'none';
+    if (!hasEmerg) ackStatus.textContent = '';
+  }
+
+  function renderAlerts(alerts, tickSeq) {
+    tickEl.textContent = tickSeq >= 0 ? String(tickSeq) : '—';
+    const active = (alerts || []).filter(function (a) { return a.active; });
+    syncEmergencyChrome(active);
+    if (!active.length) {
+      root.className = 'empty';
+      root.innerHTML = 'No active alerts';
+      return;
+    }
+    active.sort(function (a, b) {
+      return a.priority - b.priority || String(a.timestamp).localeCompare(String(b.timestamp));
+    });
+    root.className = '';
+    root.innerHTML = '<ul class="alerts-ul">' + active.map(function (a) {
+      const t = esc(a.alert_type);
+      const css = (t === 'emergency' || t === 'instability' || t === 'advisory') ? t : 'instability';
+      const sticky = a.sticky ? ' · sticky ack' : '';
+      return '<li class="alert-row ' + css + '"><span class="pill ' + css + '">' + t + '</span>' +
+        '<div class="alert-msg">' + esc(a.message) + '</div>' +
+        '<div class="alert-sub">prio ' + esc(a.priority) + ' · ' + esc(a.id) + sticky + ' · ' + esc(a.timestamp) + '</div></li>';
+    }).join('') + '</ul>';
+  }
+
+  function renderVehicle(v) {
+    if (!v || typeof v !== 'object') {
+      vehGrid.innerHTML = '<dt>Status</dt><dd>Waiting for CAN snapshot…</dd>';
+      return;
+    }
+    const sk = Number(v.speed_kmh);
+    const speedStr = (Number.isFinite(sk) ? sk.toFixed(1) : '0.0') + ' km/h';
+    const rows = [
+      ['Speed', speedStr],
+      ['Braking (norm.)', Number(v.braking_intensity).toFixed(2)],
+      ['Turn (norm.)', Number(v.turn_intensity).toFixed(2)],
+      ['Stationary', v.vehicle_stationary ? 'yes' : 'no'],
+      ['Doors open', v.doors_open ? 'yes' : 'no'],
+      ['Ramp deployed', v.ramp_deployed ? 'yes' : 'no']
+    ];
+    vehGrid.innerHTML = rows.map(function (r) {
+      return '<dt>' + esc(r[0]) + '</dt><dd>' + esc(r[1]) + '</dd>';
+    }).join('');
+  }
+
+  function setSegActive(modeKey) {
+    segMod.className = 'density-seg';
+    segXf.className = 'density-seg';
+    segCrowd.className = 'density-seg';
+    if (modeKey === 'moderate') segMod.classList.add('active-moderate');
+    else if (modeKey === 'busy') segXf.classList.add('active-extra');
+    else if (modeKey === 'crowded') segCrowd.classList.add('active-crowded');
+  }
+
+  function renderAttention(att) {
+    if (!att || typeof att !== 'object') {
+      attnBanner.style.display = 'none';
+      densCount.textContent = 'Passengers onboard: —';
+      setSegActive('moderate');
+      return;
+    }
+    attnBanner.style.display = 'block';
+    densCount.textContent = 'Passengers onboard: ' + esc(String(att.passengers_onboard))
+      + ' · capacity ' + esc(String(att.vehicle_capacity));
+    setSegActive(att.mode_key || 'moderate');
+    attnBanner.className = 'attn-banner ';
+    var mk = att.mode_key;
+    if (mk === 'busy') attnBanner.className += 'extra';
+    else if (mk === 'crowded') attnBanner.className += 'crowded';
+    else attnBanner.className += 'moderate';
+    attnBanner.textContent = att.label ? String(att.label) : '';
+    attnMeaning.textContent = att.meaning_short ? String(att.meaning_short) : '';
+    attnProv.textContent = att.rules_reference ? String(att.rules_reference) : '';
+  }
+
+  function renderTertiary(tert, hasRoomTestPanel) {
+    if (!tert || typeof tert !== 'object') {
+      canLine.innerHTML = '';
+      divNote.textContent = '';
+      return;
+    }
+    var connected = tert.can_bus_connected !== false;
+    var pillCls = connected ? 'can-pill can-on' : 'can-pill can-off';
+    var sub = connected ? 'Connected' : 'Disconnected';
+    canLine.innerHTML = '<span class="' + pillCls + '">' + esc(String(tert.can_bus_ui_label || 'CAN Bus')) + '</span>' +
+      '<span class="can-sub">' + esc(sub) + '</span>';
+    divNote.textContent = tert.diversion_control_note || '';
+    if (hasRoomTestPanel) {
+      divBtn.style.display = 'none';
+    } else {
+      divBtn.style.display = 'block';
+      var divOn = tert.diversion_active ? 'shown in tick (inactive control)' : 'inactive';
+      divBtn.textContent = 'Diversion (display only · ' + divOn + ')';
+    }
+  }
+
+  function turnGuidance(t) {
+    if (t < 0.34) return 'Low → typical straight path';
+    if (t < 0.67) return 'Mid → moderate lateral';
+    return 'High → stronger lateral / steering';
+  }
+
+  function densityTierLabel(n) {
+    if (n < 10) return 'MODERATE';
+    if (n < 20) return 'BUSY';
+    return 'CROWDED';
+  }
+
+  function rtLog(msg) {
+    rtPanelLog.textContent = msg || '';
+  }
+
+  function debouncedPostVehicle(patch) {
+    if (rtPostTimer) clearTimeout(rtPostTimer);
+    rtPostTimer = setTimeout(function () { postVehiclePatch(patch); }, 120);
+  }
+
+  async function postVehiclePatch(patch) {
+    try {
+      const r = await fetch('/test/set_vehicle_context', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(patch || {})
+      });
+      if (r.status === 404) {
+        rtLog('Test API disabled (enable ROOM_TEST on runtime).');
+        return;
+      }
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      rtLog('');
+    } catch (err) {
+      rtLog('Could not reach test API.');
+    }
+  }
+
+  function setSegPairActive(onBtn, offBtn, isOn) {
+    onBtn.classList.toggle('active', !!isOn);
+    offBtn.classList.toggle('active', !isOn);
+  }
+
+  function maybeBootstrapRoomTest(rtc) {
+    if (!rtc || !rtc.effective || rtBootstrapped) return;
+    rtBootstrapped = true;
+    var lim = rtc.limits || {};
+    if (lim.speed_kmh_max != null) rtSpeed.max = String(lim.speed_kmh_max);
+    if (lim.braking_intensity_max != null) rtBrake.max = String(lim.braking_intensity_max);
+    if (lim.turn_intensity_max != null) rtTurn.max = String(lim.turn_intensity_max);
+    var e = rtc.effective;
+    rtSpeed.value = String(Math.max(0, Math.round(Number(e.speed_kmh) || 0)));
+    rtBrake.value = String(Number(e.braking_intensity) || 0);
+    rtTurn.value = String(Number(e.turn_intensity) || 0);
+    rtPax.value = String(Math.max(0, parseInt(String(e.passengers_onboard), 10) || 0));
+    rtSpeedVal.textContent = rtSpeed.value + ' km/h';
+    rtBrakeVal.textContent = Number(rtBrake.value).toFixed(2);
+    rtTurnVal.textContent = Number(rtTurn.value).toFixed(2);
+    rtTurnGuide.textContent = 'Lateral severity: ' + turnGuidance(parseFloat(rtTurn.value));
+    var cap = e.vehicle_capacity != null ? String(e.vehicle_capacity) : '—';
+    rtPaxLabel.textContent = 'capacity ' + cap;
+    rtDensityTier.textContent = 'Density band: ' + densityTierLabel(parseInt(rtPax.value, 10) || 0);
+    setSegPairActive(document.getElementById('rt-stat-on'), document.getElementById('rt-stat-off'), !!e.vehicle_stationary);
+    setSegPairActive(document.getElementById('rt-doors-on'), document.getElementById('rt-doors-off'), !!e.doors_open);
+    setSegPairActive(document.getElementById('rt-ramp-on'), document.getElementById('rt-ramp-off'), !!e.ramp_deployed);
+    setSegPairActive(document.getElementById('rt-can-on'), document.getElementById('rt-can-off'), e.can_bus_connected !== false);
+  }
+
+  function syncRoomTestTogglesFromBundle(rtc) {
+    if (!rtc || !rtc.effective) return;
+    var e = rtc.effective;
+    setSegPairActive(document.getElementById('rt-stat-on'), document.getElementById('rt-stat-off'), !!e.vehicle_stationary);
+    setSegPairActive(document.getElementById('rt-doors-on'), document.getElementById('rt-doors-off'), !!e.doors_open);
+    setSegPairActive(document.getElementById('rt-ramp-on'), document.getElementById('rt-ramp-off'), !!e.ramp_deployed);
+    setSegPairActive(document.getElementById('rt-can-on'), document.getElementById('rt-can-off'), e.can_bus_connected !== false);
+  }
+
+  function wireRoomTestPanelOnce() {
+    if (wireRoomTestPanelOnce._done) return;
+    wireRoomTestPanelOnce._done = true;
+    function bindSegPair(onId, offId, key) {
+      var onB = document.getElementById(onId);
+      var offB = document.getElementById(offId);
+      onB.addEventListener('click', function () {
+        var o = {}; o[key] = true; postVehiclePatch(o);
+        setSegPairActive(onB, offB, true);
+      });
+      offB.addEventListener('click', function () {
+        var o = {}; o[key] = false; postVehiclePatch(o);
+        setSegPairActive(onB, offB, false);
+      });
+    }
+    bindSegPair('rt-stat-on', 'rt-stat-off', 'vehicle_stationary');
+    bindSegPair('rt-doors-on', 'rt-doors-off', 'doors_open');
+    bindSegPair('rt-ramp-on', 'rt-ramp-off', 'ramp_deployed');
+    bindSegPair('rt-can-on', 'rt-can-off', 'can_bus_connected');
+
+    rtSpeed.addEventListener('input', function () {
+      var v = parseFloat(rtSpeed.value);
+      rtSpeedVal.textContent = (Number.isFinite(v) ? String(v) : '0') + ' km/h';
+      debouncedPostVehicle({ speed_kmh: Number.isFinite(v) ? v : 0 });
+    });
+    rtBrake.addEventListener('input', function () {
+      var v = parseFloat(rtBrake.value);
+      rtBrakeVal.textContent = (Number.isFinite(v) ? v : 0).toFixed(2);
+      debouncedPostVehicle({ braking_intensity: Number.isFinite(v) ? v : 0 });
+    });
+    rtTurn.addEventListener('input', function () {
+      var v = parseFloat(rtTurn.value);
+      rtTurnVal.textContent = (Number.isFinite(v) ? v : 0).toFixed(2);
+      rtTurnGuide.textContent = 'Lateral severity: ' + turnGuidance(Number.isFinite(v) ? v : 0);
+      debouncedPostVehicle({ turn_intensity: Number.isFinite(v) ? v : 0 });
+    });
+    rtPax.addEventListener('change', function () {
+      var n = parseInt(rtPax.value, 10);
+      if (!Number.isFinite(n) || n < 0) n = 0;
+      rtPax.value = String(n);
+      rtDensityTier.textContent = 'Density band: ' + densityTierLabel(n);
+      postVehiclePatch({ passengers_onboard: n });
+    });
+
+    rtDiversionBtn.addEventListener('click', async function () {
+      try {
+        const r = await fetch('/test/request_route_diversion', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: '{}'
+        });
+        if (r.status === 404) {
+          rtLog('Diversion log API disabled (ROOM_TEST off).');
+          return;
+        }
+        if (!r.ok) throw new Error('HTTP ' + r.status);
+        rtLog('Diversion requested from UI (logged server-side).');
+      } catch (err) {
+        rtLog('Diversion request failed to reach server.');
+      }
+    });
+  }
+
+  ackBtn.addEventListener('click', async function () {
+    ackBtn.disabled = true;
+    ackStatus.textContent = 'Sending…';
+    try {
+      const r = await fetch('/acknowledge_emergency', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: '{}'
+      });
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      ackStatus.textContent = 'Acknowledgment received — runtime clears sticky on next tick.';
+    } catch (err) {
+      ackStatus.textContent = 'Could not reach server.';
+    }
+    setTimeout(function () { ackBtn.disabled = false; }, 750);
+  });
+
+  async function poll() {
+    try {
+      const r = await fetch('/tablet_bundle', { cache: 'no-store' });
+      const bundle = await r.json();
+      const xh = r.headers.get('X-Tick-Seq');
+      const ts = xh != null && xh !== '' ? parseInt(xh, 10) : -1;
+      const alerts = bundle.alerts;
+      var seq = Number.isFinite(ts) ? ts : (typeof bundle.tick_seq === 'number' ? bundle.tick_seq : -1);
+      renderAlerts(Array.isArray(alerts) ? alerts : [], seq);
+      renderVehicle(bundle.vehicle);
+      renderAttention(bundle.attention);
+      var rtc = bundle.room_test_control;
+      var hasRt = !!(rtc && rtc.active);
+      roomTestPanel.hidden = !hasRt;
+      renderTertiary(bundle.tertiary, hasRt);
+      if (hasRt) {
+        wireRoomTestPanelOnce();
+        maybeBootstrapRoomTest(rtc);
+        syncRoomTestTogglesFromBundle(rtc);
+      }
+    } catch (e) {
+      root.className = 'empty';
+      root.innerHTML = 'Cannot reach /tablet_bundle';
+      ackWrap.style.display = 'none';
+      ackStatus.textContent = '';
+      vehGrid.innerHTML = '';
+      roomTestPanel.hidden = true;
+    }
+  }
+  poll();
+  setInterval(poll, 1000);
+})();
+</script>
+</body>
+</html>

@@ -1,0 +1,9 @@
+{
+  "_copyright": "© 2026 TravelMate AI. Confidential and Proprietary. All rights reserved.",
+  "overrides": [],
+  "room_test_timing": {
+    "boarding_dwell_secs": 120,
+    "exit_dwell_secs": 180,
+    "standing_dwell_secs": 120
+  }
+}

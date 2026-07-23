@@ -1,0 +1,8 @@
+{
+  "braking_intensity": 0.9,
+  "doors_open": false,
+  "ramp_deployed": false,
+  "speed": 0.3,
+  "turn_intensity": 0.2,
+  "vehicle_stationary": false
+}

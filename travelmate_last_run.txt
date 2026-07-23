@@ -1,0 +1,285 @@
+© 2026 TravelMate AI.
+Confidential and Proprietary.
+All rights reserved.
+
+TravelMate AI PoC - startup (full harness)
+Running 17 tick(s). If the console scrolls too far, run: python main.py --log
+Compliance log (append-only): C:\Users\My Laptop\Documents\Travelmate_POC\travelmate_compliance.log
+Emergency compliance log (append-only): C:\Users\My Laptop\Documents\Travelmate_POC\travelmate_emergency.log
+
+--- Tick 1 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.55, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.2, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.30, braking=0.20, turn=0.10, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.2350
+Density context: onboard=25/50 -> level=0.5000
+Behaviour aggregate (situation): 0.5500 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Scenario classification: none matched - threshold row uses INSTABILITY_RISK baseline for monitoring only.
+Threshold row: support=undeclared alert=instability_risk
+Risk score (compounded): 0.4013
+No action required - no operational scenario matched; routine monitoring only.
+
+--- Tick 2 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.2, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.65, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.75, braking=0.50, turn=0.40, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.6100
+Density context: onboard=20/50 -> level=0.4000
+Behaviour aggregate (situation): 0.6500 | consent_enhanced=False
+Consent-declared support (policy only): child_support
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): child_high_movement | scenario_matched=True | policy_inputs=none
+Threshold row: support=child_support alert=child_high_movement
+Risk score (compounded): 0.5413
+No action required - situation observed; risk gates not exceeded.
+
+--- Tick 3 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.5, 'unstable_posture': 0.4, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.45, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.40, braking=0.75, turn=0.20, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.4925
+Density context: onboard=30/50 -> level=0.6000
+Behaviour aggregate (situation): 0.4500 | consent_enhanced=False
+Consent-declared support (policy only): pregnancy_support
+Journey phase: approaching_stop
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): seat_assistance_required | scenario_matched=True | policy_inputs=none
+Threshold row: support=pregnancy_support alert=seat_assistance_required
+Risk score (compounded): 0.5104
+No action required - situation observed; risk gates not exceeded.
+
+--- Tick 4 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.45, 'frequent_balance_correction': 0.5, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.50, braking=0.30, turn=0.85, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.4825
+Density context: onboard=28/50 -> level=0.5600
+Behaviour aggregate (situation): 0.5000 | consent_enhanced=False
+Consent-declared support (policy only): medical_sensitivity
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): instability_risk | scenario_matched=True | policy_inputs=none
+Threshold row: support=medical_sensitivity alert=instability_risk
+Risk score (compounded): 0.5131
+No action required - situation observed; risk gates not exceeded.
+
+--- Tick 5 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.7, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.25, 'near_stairs_or_upper_deck': 0.6}
+CAN (simulated): speed=0.60, braking=0.40, turn=0.30, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.4850
+Density context: onboard=35/50 -> level=0.7000
+Behaviour aggregate (situation): 0.3850 | consent_enhanced=False
+Consent-declared support (policy only): wheelchair
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): wheelchair_unsafe_position | scenario_matched=True | policy_inputs=none
+Threshold row: support=wheelchair alert=wheelchair_unsafe_position
+Risk score (compounded): 0.5075
+No action required - situation observed; risk gates not exceeded.
+
+--- Tick 6 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.65, 'prolonged_standing': 0.0, 'unstable_posture': 0.5, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.55}
+CAN (simulated): speed=0.55, braking=0.45, turn=0.35, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.4850
+Density context: onboard=40/50 -> level=0.8000
+Behaviour aggregate (situation): 0.5000 | consent_enhanced=False
+Consent-declared support (policy only): pushchair
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): pushchair_unsafe_position | scenario_matched=True | policy_inputs=none
+Threshold row: support=pushchair alert=pushchair_unsafe_position
+Risk score (compounded): 0.5789
+Assist small wheeled device - unsafe position near stairs or movement area; slow down.
+
+--- Tick 7 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.55, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.35, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.65, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.35, braking=0.20, turn=0.15, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.2675
+Density context: onboard=48/50 -> level=0.9600
+Behaviour aggregate (situation): 0.3500 | consent_enhanced=False
+Consent-declared support (policy only): elderly_support
+Journey phase: approaching_stop
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): blocked_exit_vulnerable | scenario_matched=True | policy_inputs=none
+Threshold row: support=elderly_support alert=blocked_exit_vulnerable
+Risk score (compounded): 0.4479
+No action required - situation observed; risk gates not exceeded.
+No action required - previous routine alert cleared; conditions back within range.
+
+--- Tick 8 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.4, 'aggressive_motion_pattern': 0.35, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.45, braking=0.30, turn=0.25, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.3675
+Density context: onboard=47/50 -> level=0.9400
+Behaviour aggregate (situation): 0.4000 | consent_enhanced=False
+Consent-declared support (policy only): medical_sensitivity,mobility_support
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): crowding_advisory | scenario_matched=True | policy_inputs=none
+Threshold row: support=medical_sensitivity alert=crowding_advisory
+Risk score (compounded): 0.5170
+No action required - situation observed; risk gates not exceeded.
+
+--- Tick 9 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.20, braking=0.10, turn=0.10, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.1500
+Density context: onboard=55/50 -> level=1.0000
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): capacity_exceeded | scenario_matched=True | policy_inputs=capacity_exceeded
+Threshold row: support=undeclared alert=capacity_exceeded
+Risk score (compounded): 0.0000
+Passenger count is above nominal vehicle capacity - do not depart until load is reduced safely; manage boarding and doors calmly.
+
+--- Tick 10 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.30, braking=0.20, turn=0.10, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.2350
+Density context: onboard=10/50 -> level=0.2000
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=True, fire=False, altercation=False, distress=False | resolved=passenger_collapse_or_fall
+(Compounded risk not evaluated: emergency fast path.)
+EMERGENCY - immediate: passenger collapse or fall. Follow emergency procedures; routine risk alerts suspended this cycle.
+DRIVER: Emergency acknowledged by operator. Further escalation / external notify only after acknowledgment (simulated).
+
+--- Tick 11 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.20, braking=0.10, turn=0.10, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.1500
+Density context: onboard=10/50 -> level=0.2000
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+Driver ack (emergency): True
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Scenario classification: none matched - threshold row uses INSTABILITY_RISK baseline for monitoring only.
+Threshold row: support=undeclared alert=instability_risk
+Risk score (compounded): 0.0000
+No action required - no operational scenario matched; routine monitoring only.
+No action required - previous routine alert cleared; conditions back within range.
+
+--- Tick 12 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.5, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.35, braking=0.25, turn=0.10, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.2775
+Density context: onboard=22/50 -> level=0.4400
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): visual_impairment
+Journey phase: approaching_stop
+BLE zone (optional): enabled=True, zone=wheelchair_bay, conf=0.75
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): exit_preparation | scenario_matched=True | policy_inputs=none
+Threshold row: support=visual_impairment alert=exit_preparation
+Risk score (compounded): 0.0000
+No action required - situation observed; risk gates not exceeded.
+
+--- Tick 13 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.20, braking=0.10, turn=0.10, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.1500
+Density context: onboard=10/50 -> level=0.2000
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+System faults (simulated): {'display_fault': True}
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): system_support_alert | scenario_matched=True | policy_inputs=none
+Threshold row: support=undeclared alert=system_support_alert
+Risk score (compounded): 0.0000
+No action required - situation observed; risk gates not exceeded.
+
+--- Tick 14 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.55, braking=0.15, turn=0.10, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=True, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.3425
+Density context: onboard=12/50 -> level=0.2400
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+POLICY: Route diversion request ignored - vehicle not stationary (diversion_allowed=False); compliance event logged.
+Scenario classification: none matched - threshold row uses INSTABILITY_RISK baseline for monitoring only.
+Threshold row: support=undeclared alert=instability_risk
+Risk score (compounded): 0.0000
+No action required - no operational scenario matched; routine monitoring only.
+
+--- Tick 15 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.00, braking=0.00, turn=0.00, doors_open=False, ramp_deployed=False, vehicle_stationary=True
+Policy hooks: diversion_allowed=True (tablet contract), driver_diversion_active=True, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.0000
+Density context: onboard=8/50 -> level=0.1600
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: approaching_stop
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): route_diversion_active | scenario_matched=True | policy_inputs=route_diversion_active
+Threshold row: support=undeclared alert=route_diversion_active
+Risk score (compounded): 0.0000
+SIMULATED NOTIFY (consented passengers): Route change in effect - please allow extra time; listen for driver announcements.
+Route diversion active. Notify passengers and allow extra time.
+
+--- Tick 16 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.00, braking=0.00, turn=0.00, doors_open=False, ramp_deployed=False, vehicle_stationary=True
+Policy hooks: diversion_allowed=True (tablet contract), driver_diversion_active=False, passenger_stop_request=False consented=False
+Derived motion level [0,1]: 0.0000
+Density context: onboard=52/50 -> level=1.0000
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): capacity_exceeded | scenario_matched=True | policy_inputs=capacity_exceeded
+Threshold row: support=undeclared alert=capacity_exceeded
+Risk score (compounded): 0.0000
+Passenger count is above nominal vehicle capacity - do not depart until load is reduced safely; manage boarding and doors calmly.
+
+--- Tick 17 ---
+Observed cues (simulated perception): {'navigation_aid_in_use': 0.0, 'large_mobility_device_present': 0.0, 'small_wheeled_carriage_present': 0.0, 'prolonged_standing': 0.0, 'unstable_posture': 0.0, 'frequent_balance_correction': 0.0, 'leaning_without_support': 0.0, 'floor_level_posture': 0.0, 'rapid_erratic_motion': 0.0, 'repetitive_agitated_motion': 0.0, 'distress_motion_pattern': 0.0, 'aggressive_motion_pattern': 0.0, 'near_door_area': 0.0, 'near_priority_space': 0.0, 'near_stairs_or_upper_deck': 0.0}
+CAN (simulated): speed=0.25, braking=0.10, turn=0.05, doors_open=False, ramp_deployed=False, vehicle_stationary=False
+Policy hooks: diversion_allowed=False (tablet contract), driver_diversion_active=False, passenger_stop_request=True consented=True
+Derived motion level [0,1]: 0.1675
+Density context: onboard=15/50 -> level=0.3000
+Behaviour aggregate (situation): 0.0000 | consent_enhanced=False
+Consent-declared support (policy only): undeclared
+Journey phase: in_motion
+Driver ack (emergency): False
+Emergency cue flags: fall=False, fire=False, altercation=False, distress=False | resolved=None
+Selected alert (priority): passenger_stop_request | scenario_matched=True | policy_inputs=passenger_stop_request
+Threshold row: support=undeclared alert=passenger_stop_request
+Risk score (compounded): 0.0000
+STOP BUS - vulnerable passenger exiting. Prepare to stop safely.

@@ -1,0 +1,14 @@
+{
+  "observed_cues": {
+    "unstable_posture": 0.1,
+    "prolonged_standing": 0.05,
+    "floor_level_posture": 0.0,
+    "rapid_erratic_motion": 0.0,
+    "near_door_area": 0.2
+  },
+  "camera_zones": {
+    "door": 0.15,
+    "mid": 0.75,
+    "rear": 0.1
+  }
+}

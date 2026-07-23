@@ -1,0 +1,4 @@
+{
+  "declared_ui_options": ["visual_assistance", "extra_time_exiting"],
+  "consent_enhanced_supervision": false
+}
